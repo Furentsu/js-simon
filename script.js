@@ -18,12 +18,10 @@ let startGame = setTimeout(function() {
 // Function needed to generate and show the user some random numbers within a fixed interval, given the user's first input.
 function randomNumberGenerator(num, min, max) {
     let generatedArray = [];
-    let i=0;
-    while (i < num) {
+    while (generatedArray.length < num) {
         let generatedNumber = (Math.floor(Math.random() * (max - min + 1)) + min);
         if (!(generatedArray.includes(generatedNumber))) {
             generatedArray.push(generatedNumber);
-            i++
         }
     }
     return generatedArray;
@@ -32,13 +30,11 @@ function randomNumberGenerator(num, min, max) {
 // Function needed to prompt the user repeatedly for at least n times, where n = length of the array populated by randomly generated numbers (i.e first user's input, stored in the variable "numbersToBeGenerated").
 function getUserInput(num) {
     let userArray = [];
-    let i=0;
-    while (i < num) {
+    while (userArray.length < num) {
         let userInput = prompt("Try to remember all the numbers you have just seen!")
         if (!(userArray.includes(userInput))) {
             userArray.push(userInput);
         }
-        i++
     }
     return userArray;
 }
