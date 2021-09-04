@@ -9,7 +9,7 @@ alert(selectedNumbers);
 let startGame = setTimeout(function() {
     let userArray = getUserInput(numbersToBeGenerated);
     finalResult(selectedNumbers, userArray);
-}, 3000);
+}, 30000);
 
 
 
@@ -53,7 +53,7 @@ function finalResult(originalArray, userArray) {
     if (gotNumbers.length == 0) {
         alert("Apparently, you do not have an exceptional memory...");
     } else if (gotNumbers.length < originalArray.length) {
-        alert("You got " + gotNumbers.length + " number/s correctly out of " + originalArray.length + " ==> " + gotNumbers.toString());
+        alert("You got " + gotNumbers.length + " number/s correctly out of " + originalArray.length + " ==> " + gotNumbers.toString() + ". You missed the following number/s: " + missedNumbers.toString()) + " .";
     } else {
         alert("You got them all! Congratulations!!");
     }
