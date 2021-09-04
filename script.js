@@ -9,7 +9,7 @@ alert(selectedNumbers);
 let startGame = setTimeout(function() {
     let userArray = getUserInput(numbersToBeGenerated);
     finalResult(selectedNumbers, userArray);
-}, 30000);
+}, 3000);
 
 
 
@@ -31,7 +31,7 @@ function randomNumberGenerator(num, min, max) {
 function getUserInput(num) {
     let userArray = [];
     while (userArray.length < num) {
-        let userInput = prompt("Try to remember all the numbers you have just seen!")
+        let userInput = parseInt(prompt("Try to remember all the numbers you have just seen!"));
         if (!(userArray.includes(userInput))) {
             userArray.push(userInput);
         }
@@ -42,11 +42,19 @@ function getUserInput(num) {
 // Function needed to evaluate and display the final result.
 function finalResult(originalArray, userArray) {
     let gotNumbers = [];
-    for (i=0; i < originalArray.length; i++) {
-        for (j=0; j < userArray.length; j++) {
-            if (originalArray[i] == userArray[j])
-            gotNumbers.push(userArray[j])
-        }
+    let missedNumbers = [];
+    for (let i=0; i < originalArray.length; i++) {
+            if (originalArray.includes((userArray[i]))) {
+                gotNumbers.push(userArray[i]);
+            } else {
+                missedNumbers.push(userArray[i]);
+            }
     }
-    alert("You got " + gotNumbers.length + " numbers correctly: " + gotNumbers.toString())
+    if (gotNumbers.length == 0) {
+        alert("Apparently, you do not have an exceptional memory...");
+    } else if (gotNumbers.length < originalArray.length) {
+        alert("You got " + gotNumbers.length + " number/s correctly out of " + originalArray.length + " ==> " + gotNumbers.toString());
+    } else {
+        alert("You got them all! Congratulations!!");
+    }
 }
